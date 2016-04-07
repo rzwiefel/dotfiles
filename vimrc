@@ -110,12 +110,6 @@ vnoremap <leader>r :sort<CR>
 vnoremap > >gv
 vnoremap < <gv
 
-" Disable arrow keys to be mean
-inoremap <Left>     <NOP>
-inoremap <Right>    <NOP>
-inoremap <Up>       <NOP>
-inoremap <Down>     <NOP>
-
 " Quickly wrap a long line
 nnoremap <leader>w mkVgq`k
 " Wrap an entire file
