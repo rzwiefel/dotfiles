@@ -1,16 +1,9 @@
 # aliases
 
-alias ..='cd ../'
-
 # handy function to check if a command
 # exits
 exists() {
   type $1 > /dev/null 2>&1
-  if [ "$?" -eq "0" ]; then
-    return 0 # found
-  else
-    return 1 # not found
-  fi
 }
 
 is_osx() {
@@ -69,3 +62,4 @@ alias ctl='sudo systemctl'
 alias rctl='sudo systemctl daemon-reload'
 
 
+alias ..='cd ../'
