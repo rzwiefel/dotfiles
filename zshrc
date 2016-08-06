@@ -31,8 +31,8 @@ if [ "$branch" != "" ]; then
     branch="on ${repo}$branch${rs}"
 fi
 
-PROMPT="${ret}%(?..%? )${rs}${user}%n${rs} at ${host}%m${rs} in ${dir}%~${rs} ${branch}
-%# "
+PROMPT="${ret}%(?..%? )${rs}${user}%n${rs}@${host}%m${rs}:${dir}%~${rs} ${branch}
+👉s  "
 
 }
 
