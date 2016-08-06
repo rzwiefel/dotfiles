@@ -25,3 +25,9 @@ if [ -d "$HOME/go" ] ; then
     export GOPATH="$HOME/go"
     PATH="$HOME/go/bin:$PATH"
 fi
+
+#check if its in a dropbox folder since ryan is a bad person
+if [ -d "$HOME/Dropbox/go" ] ; then
+    export GOPATH="$HOME/Dropbox/go"
+    PATH="$HOME/Dropbox/go/bin:$PATH"
+fi
