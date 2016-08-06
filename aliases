@@ -21,15 +21,17 @@ is_osx() {
   fi
 }
 
-# open file as if in file browser
-exists xdg-open && alias open='xdg-open'
 
 # listing 
 alias ls='ls --color=auto'
-is_osx && alias ls='ls -G'
-alias ll='ls -AlF'
+alias l='ls -GCF'
 alias la='ls -A'
-alias l='ls -CF'
+alias ll='ls -GCFao'
+alias cdr='cd ~/repo'
+is_osx && alias opens='open -a /Applications/Sublime\ Text.app/'
+is_osx && alias showhidden='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+is_osx && alias hidehidden='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
 
 # vim
 alias vi='vim'
@@ -44,33 +46,20 @@ alias egrep='egrep --color=auto'
 # sudo, keep environment
 alias s='sudo -E'
 
-# safe rm, because i can't trust myself
-trash() {
-  mv -iv $@ "$HOME/.Trash"
-}
-if [ -d "$HOME/.Trash" ]; then
-  is_osx && alias rm='trash'
-fi
-
-exists gvfs-trash && alias rm='gvfs-trash'
-
-# pacman shortcuts
-alias pacman='sudo pacman --color=auto'
-alias pacin='pacman -S'    # install from repo
-alias pacins='pacman -U'   # install from file
-alias pacrem='pacman -Rns' # remove package
-alias pacre='pacman -R'    # remove keep config
-alias paccl='pacman -Sc'   # clean package cache
-alias pacupg='pacman -Syu' # upgrade
-
 # git shortcuts
-alias gs='git status -s -b'
-alias gd='git diff'
-alias gc='git checkout'
-alias gl='git log --oneline --decorate --graph'
+alias gco='git checkout'
+alias gst='git status'
+alias gfe='git fetch'
+alias gpu='git pull'
+alias gre='git rebase'
+alias gcm='git commit'
+alias gdi='git diff'
+alias gsgsd='git stash && git stash drop'
+alias gcf='git clean -f'
+alias glp='git log --pretty=oneline'
+#alias lg=`log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit —`
+alias grv='git remote -v'
 
-# tmux
-alias tmux='TERM=screen-256color-bce tmux'
 
 # better cp, if available
 exists rsync && alias cp='rsync -a --progress'
@@ -79,8 +68,4 @@ exists rsync && alias cp='rsync -a --progress'
 alias ctl='sudo systemctl'
 alias rctl='sudo systemctl daemon-reload'
 
-# docker aliases
-alias docker-clean='docker rm $(docker ps -aq)'
 
-# npm
-exists python2 && alias npm="npm --python=python2"
